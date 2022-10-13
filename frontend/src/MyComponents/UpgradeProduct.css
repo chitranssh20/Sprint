@@ -1,0 +1,11 @@
+.upgradeProdImg{
+    height: 50px;
+    width: 50px;
+}
+.divUpgradeImg{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+    z-index: 10;
+}

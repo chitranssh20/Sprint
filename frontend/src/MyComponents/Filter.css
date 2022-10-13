@@ -1,0 +1,12 @@
+.filterNav{
+    background-color: #ae946d;
+    margin-top: 30px;
+}
+.filterNavButton{
+    background-color: transparent;
+    margin-left: 35px;
+    margin-right: 35px;
+    border: 1px solid transparent;
+    color: white;
+    font-size: 15px;
+}

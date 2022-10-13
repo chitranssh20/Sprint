@@ -1,0 +1,22 @@
+table{
+    /* background-color: aquamarine; */
+    width: 100%;
+}
+tr{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+}
+th{
+    border: 1px solid red;
+    width: 20%;
+}
+button{
+    color: white;
+    font-size: 15px;
+    background-color: #7b22a7;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid black;
+}

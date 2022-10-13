@@ -1,0 +1,46 @@
+.addProductFormInput{
+    border: none;
+    border-bottom: 1px solid red;
+    width: 40%;
+    padding: 5px;
+    margin-top: 5px;
+}
+.addProductFormInput:focus{
+    border-bottom: 1px solid red;
+
+}
+.addProductForm{
+    margin-top: 50px;
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.addProductFormField{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    width: 100%;
+}
+.addProductFormSubmit{
+    background-color: #f95757;
+    width: 80px;
+    height: 50px;
+    color: white;
+    letter-spacing: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.addProductFormSubmit:active{
+    transform: scale(0.9);
+}
+.addProductFormLabel{
+    width: 50%;
+}
+    .addProductFormFileInput{
+        background-color: white;
+    }

@@ -1,0 +1,15 @@
+.staffButton{
+    background-color: #ae946d;
+    color: white;
+    font-weight: 500;
+    width: 50%;
+    height: 80%;
+    letter-spacing: 2px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+.staffButton:active{
+    transform: scale(0.9);
+}

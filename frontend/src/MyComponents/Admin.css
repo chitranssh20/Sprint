@@ -1,0 +1,38 @@
+table{
+    width: 100%;
+}
+tr{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+thead tr td{
+    background-color: beige;
+    color: black;
+}
+td{
+    width: 20%;
+    font-size: 15px;
+    border: 1px solid black;
+    text-align: center;
+    height: 50px;
+}
+.adminProductButtons{
+    background-color: #ae946d;
+    color: white;
+    width: 50%;
+    height: 80%;
+    letter-spacing: 2px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.adminProductButtons:active{
+    transform: scale(0.9);
+}
+
+.adminFirstTD{
+    background-color: white;
+    margin-bottom: 30px;
+}

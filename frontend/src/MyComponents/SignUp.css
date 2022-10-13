@@ -1,0 +1,45 @@
+.signupForm{
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: beige;
+    
+}
+.signupFormOuterDiv{
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.signupFormDiv{
+    background-color: transparent;
+}
+
+.signupInput{
+    border: none;
+    border-bottom: 1px solid red;
+    width: 80%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.signupLabel{
+    background-color: transparent;
+}
+
+.signupButton{
+    width: 50%;
+    height: 100%;
+    border: none;
+    background-color: #ae946d;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}

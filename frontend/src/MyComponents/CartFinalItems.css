@@ -1,0 +1,23 @@
+.cartFinalListItem{
+    width: 100%;
+    background-color: none;
+    font-size: 2px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    border-bottom: 1px solid black;
+}
+.cartFinalListItemDetailName{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+.cartFinalListItemDetailPrice{
+    color: black;
+    font-size: 12px;
+    color: red;
+}
+.cartFinalListItemDetailQuantity{
+    color: black;
+    font-size: 12px;
+}
