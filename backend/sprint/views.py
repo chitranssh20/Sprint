@@ -94,7 +94,7 @@ class LogIn(APIView):
                     response = Response({'message': 'User Logged In', 'fname': user.fname,'staff': user.is_staff, 'superuser': user.is_superuser,  'status': status.HTTP_202_ACCEPTED}) 
                     return response
                 else:
-                    return Response({'message': 'You have entered wrong password', 'status': status.HTTP_406_NOT_ACCEPTABLE })
+                    return Response({'message': 'You have entered wrong password', 'status': status.HTTP_406_NOT_ACCEPTABLE }) 
 
         else:
             return Response({'message': 'Please use post method', 'status': status.HTTP_400_BAD_REQUEST })

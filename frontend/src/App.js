@@ -30,9 +30,9 @@ function App() {
     
     <Header />
     <Filter />
-    <Cart />
     <Routes>
     <Route path='/' element = { <Product /> }  />
+    <Route path = '/cart' element = {<Cart /> } />
     
     <Route  path =  '/admin' element= {<Admin />}  />
     <Route path= '/addProduct' element= {<AddProduct />} />

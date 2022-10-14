@@ -6,42 +6,35 @@ import { CartFinalItems } from './CartFinalItems';
 
 
 export const Cart = () => {
-
-
-
-    let cartCross = document.getElementById('CartCrossSpanCross');
+    let cart = null
+   try {
+    cart = JSON.parse(localStorage.getItem('cart')) 
+   } catch (error) {
+        console.log(error)
+   }
     
-    const cartDisappear = () =>{
-        // let cartSideBar = document.getElementById('CartSideBar');
-        // cartSideBar.style.zIndex = "-10";
-    }
-    try {
-        useEffect(() => {
-        //  cartDisappear();
-        }, [])
-        
-    } catch (error) {
-        console.log(error);
-    }
-    
-   let cart = JSON.parse(localStorage.getItem('cart'))
-  return (
-   <>
-   {/* <div className='CartSideBar' id = 'CartSideBar' >
-        <div className='CartCross' >
-            <h3><span className='CartCrossSpan' >Cart</span> <span className='CartCrossSpan CartCrossSpanCross ' id='CartCrossSpanCross' onClick={cartDisappear} >X</span> </h3>
-        </div>
-        <div className = 'CartItemList'>
-        <ul className='cartFinalList' >
-            {
-                cart.map(element => {
-                    return     <CartFinalItems element = {element} />
-            // </>
-                })
-            }
-            </ul>    
-        </div>
-        </div> */}
-        </>
-        ) 
-    }
+if(cart==null || cart==undefined){
+    return <h3>No Items have been added</h3>
+}
+else{
+
+    return (
+        <>
+            <table className='cartPage' >
+                <thead className='cartTHead' >
+                    <tr>
+                        <td className= 'cartImgTd' >Image</td>
+                        <td  >Name</td>
+                        <td className='cartQtTd' >Quantity</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <CartFinalItems />
+                </tbody>
+            </table>
+    </>
+
+
+) 
+}
+}
