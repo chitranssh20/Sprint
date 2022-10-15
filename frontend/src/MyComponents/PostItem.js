@@ -13,7 +13,7 @@ const cardStyle = {
     flexDirection: 'column',
 }
 
-const upgradeCart = (id, name, price, qty, isCartNull  ) =>{
+const upgradeCart = (id, name, price,image, qty, isCartNull  ) =>{
 
   if(isCartNull === true){
 
@@ -23,6 +23,7 @@ const upgradeCart = (id, name, price, qty, isCartNull  ) =>{
         id: id,
         name: name,
         price: price,
+        image: image,
         qty: qty+1  
       }])
       )
@@ -42,6 +43,7 @@ const upgradeCart = (id, name, price, qty, isCartNull  ) =>{
             id: id,
             name: name,
             price: price,
+            image: image,
             qty: 1  
             
           }
@@ -52,7 +54,7 @@ const upgradeCart = (id, name, price, qty, isCartNull  ) =>{
       }
     }
 }
-const checkQty = (id,name, price) =>{
+const checkQty = (id,name, price, image) =>{
   let cart = JSON.parse(localStorage.getItem('cart'));
   let qty = 0;
       cart.forEach(element => {
@@ -60,11 +62,11 @@ const checkQty = (id,name, price) =>{
           qty = element.qty;
         }
       });
-      upgradeCart(id, name, price, qty, false)
+      upgradeCart(id, name, price, image, qty, false)
 }
-const addToCart = (e, id, name, price) => {
+const addToCart = (e, id, name, price, image) => {
   let cart = localStorage.getItem('cart');
-  cart==null?upgradeCart(id, name, price, 0, true):checkQty(id, name, price);
+  cart==null?upgradeCart(id, name, price, image, 0, true):checkQty(id, name, price, image);
 }
 
 
@@ -87,7 +89,7 @@ const PostItem = ({loading, post}) => {
               <li className="list-group-item">Category: {posts.category} </li>
             </ul>
             <div className="card-body">
-              <button className= 'btn btn-danger rounded-0 mx-2 my-2' onClick={ (e) =>{addToCart(e, posts.prodId, posts.name, posts.price  )}   }  >Add to Cart</button>
+              <button className= 'btn btn-danger rounded-0 mx-2 my-2' onClick={ (e) =>{addToCart(e, posts.prodId, posts.name, posts.price, posts.prodImg  )}   }  >Add to Cart</button>
               <a href=  {'/product/'+ posts.prodId}  target= '_blank'  className="card-link"><button className='btn btn-outline-danger rounded-0 mx-2' >Details</button> </a>
             </div>
           </div>

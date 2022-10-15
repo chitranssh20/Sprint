@@ -1,7 +1,7 @@
 import React from 'react'
 import './CartFinalItems.css'
 import uuid from 'react-uuid'
-import { useEffect } from 'react'
+
 
 export const CartFinalItems = () => {
   
@@ -9,23 +9,17 @@ export const CartFinalItems = () => {
 
   let cart = JSON.parse(localStorage.getItem('cart'));
   
-  useEffect(()=>{
-    let newCart ;
-    for(let i = 0; i< cart.length; i++){
-      if(i.qty<=0){
-         newCart = cart.splice(i, 1)
-      }
-    }
-    // localStorage.setItem('cart', JSON.stringify(newCart))
-    console.log(newCart)
-  }, cart)
-
   const subqty = (id) =>{
+ 
     let cart = JSON.parse(localStorage.getItem('cart'));
     cart.forEach(element => {
       if(element.id == id){
-        if(element.qty>=0){
-
+        if(element.qty>0){
+          let qtyId = document.getElementById(`qtId`+id )
+          let qtyNum = qtyId.innerHTML;
+          let itemValue = Number.parseInt(qtyNum);
+          itemValue = itemValue - 1;
+          qtyId.innerHTML = itemValue;
           element.qty = element.qty - 1;
         }
         else{
@@ -38,6 +32,12 @@ export const CartFinalItems = () => {
   }
   
   const addqty = (id) =>{
+    let qtyId = document.getElementById(`qtId`+id )
+    let qtyNum = qtyId.innerHTML;
+    let itemValue = Number.parseInt(qtyNum);
+    itemValue = itemValue + 1;
+    qtyId.innerHTML = itemValue;
+  
     let cart = JSON.parse(localStorage.getItem('cart'));
     cart.forEach(element => {
       if(element.id == id){
@@ -48,19 +48,18 @@ export const CartFinalItems = () => {
   }
     
     
-    
+    let url = 'http://127.0.0.1:8000'
     return (
       <>
       {
         cart.map((item)=>{
           if (item.qty>0){
-
             return <tr key= {uuid()}>
-            <td>Img</td>
+            <td><img src = {url + item.image} width= '100px' height= '150px' /> </td>
             <td>{item.name}</td>
             <td><button className='qtbutton' onClick={(e)=>{
               subqty(item.id);
-            }}>-</button>{item.qty}<button className='qtbutton' onClick={(e)=>{
+            }}>-</button><span id = {'qtId'+ item.id} > {item.qty}</span><button className='qtbutton' onClick={(e)=>{
               e.preventDefault();
               addqty(item.id);
             }} >+</button>  </td>

@@ -1,7 +1,7 @@
 .cartPage{
     width: 90%;
     background-color: black;
-    min-height: 50vh;
+    /* min-height: 50vh; */
     border: 1px solid black;
     position: absolute;
     left: 50%;
