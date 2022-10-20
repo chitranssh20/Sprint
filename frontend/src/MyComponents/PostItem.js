@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'react-uuid'
 
 const cardStyle = {
     height: "800px",
@@ -70,9 +71,9 @@ const addToCart = (e, id, name, price, image) => {
 }
 
 
-const PostItem = ({loading, post}) => {
-    if(loading){
-        return <h1>Loading...</h1>
+const PostItem = ({post}) => {
+    if(1==2){
+        
     }
     else{
         return post.map((posts)=>{

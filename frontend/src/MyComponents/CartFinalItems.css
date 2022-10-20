@@ -5,3 +5,13 @@
     font-size: 15px;
     font-weight: 500;
 }
+.checkout{
+    background-color: #ae946d;
+    color: white;
+    width: 50%;
+    height: 80%;
+    letter-spacing: 2px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}

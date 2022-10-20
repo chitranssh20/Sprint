@@ -3,12 +3,14 @@ import { useState } from 'react'
 import axios from 'axios'
 import './LogIn.css'
 import { Redux } from './Redux'
+import { Navigate, useNavigate } from 'react-router-dom'
 // axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 // axios.defaults.xsrfCookieName = 'csrftoken' 
 // axios.defaults.withCredentials = true
 
 export const LogIn = () => {
-
+    let navigate = useNavigate();
+    
     const [loginEmail, setloginEmail] = useState('')
     const [loginPassword, setloginPassword] = useState('')
     const [user, setuser] = useState([])
@@ -32,48 +34,29 @@ export const LogIn = () => {
                         
                     }
                 }
-                else if(res.status === 200){
+                else if(res.data.status === 202){
                     alert('User succesffully logged In' )
                     // console.log(res.data);
                     setuser(res.data) 
                     sessionStorage.setItem('staff', res.data.staff)
                     sessionStorage.setItem('superuser', res.data.superuser)
                     sessionStorage.setItem('fname', res.data.fname)
-                    
-                    
-                    // return <Staff user = {user} />
-                    
-                    
-                    // function getCookie(name) {
-                    //     let cookieValue = null;
-                    //     if (document.cookie && document.cookie !== '') {
-                    //         const cookies = document.cookie.split(';');
-                    //         for (let i = 0; i < cookies.length; i++) {
-                    //             const cookie = cookies[i].trim();
-                    //             // Does this cookie string begin with the name we want?
-                    //             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    //                 break;
-                    //             }
-                    //         }
-                    //     }
-                    //     return cookieValue;
-                    // }
-                    // const csrftoken = getCookie('csrftoken');
-                    
-                    //         console.log(csrftoken)
-                            
-                        }
-                        else if(res.data.status === 400){
-                            alert('Please use Post method')
-                        }
-                        
-                    }).catch(err =>
-                        console.log(err))
-                    }
-                    console.log(user)
-                    return (
-                        <>
+                    localStorage.setItem('login', 'successful');
+                    navigate('/');
+                }
+                else if(res.data.status === 406){
+                    alert('You have entered wrong credentials')
+                }
+                else if(res.data.status === 400){
+                    alert('Please use Post method')
+                }
+                
+            }).catch(err =>
+                console.log(err))
+            }
+            console.log(user)
+            return (
+                <>
  <form  className='loginForm' onSubmit={login} encType= 'multipart/form-data' >
         <div className='loginFormOuterDiv'>
 

@@ -1,12 +1,13 @@
 import React from 'react'
 import './CartFinalItems.css'
+import Checkout from './Checkout'
 import uuid from 'react-uuid'
-
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export const CartFinalItems = () => {
   
 
-
+  let navigate = useNavigate();
   let cart = JSON.parse(localStorage.getItem('cart'));
   
   const subqty = (id) =>{
@@ -47,7 +48,18 @@ export const CartFinalItems = () => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }
     
-    
+  const checkout = () =>{
+    let user = localStorage.getItem('login');
+    if(user != 'successful'){
+      alert('Please log in before checking Out');
+
+    }
+    else{
+      navigate('/checkout')
+    }
+  }
+
+
     let url = 'http://127.0.0.1:8000'
     return (
       <>
@@ -65,8 +77,22 @@ export const CartFinalItems = () => {
             }} >+</button>  </td>
           </tr>
       }
-        })
-      }
+    })
+  }
+  <tr>
+    <td>
+
+    </td>
+    <td>
+
+  <button className='btn checkout'  onClick={checkout}   >CHECKOUT</button>
+    </td>
+    <td>
+
+    </td>
+  </tr>
+
+     
     </>
   )
 }

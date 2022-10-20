@@ -89,6 +89,7 @@ class LogIn(APIView):
                 return Response({'message': 'Please sign up first', 'status': status.HTTP_404_NOT_FOUND})
             else:
                 user = authenticate(email = email, password = password)
+                print(user)
                 if user is not None:
                     login(request, user)
                     response = Response({'message': 'User Logged In', 'fname': user.fname,'staff': user.is_staff, 'superuser': user.is_superuser,  'status': status.HTTP_202_ACCEPTED}) 

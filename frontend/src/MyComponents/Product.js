@@ -14,13 +14,13 @@ export const Product = () => {
         setloading(true)
         axios.get('http://127.0.0.1:8000/sprint/getProduct/').then(res => {
             setpost(res.data.products)
-            console.log(post)
+            // console.log(post)
         })
         .catch(err => console.log(err));
          setloading(false)   
     }, [])
 
-    console.log(post)
+    // console.log(post)
     const indexOfLastPost = currentPage * postPerpage
     const indexofFirstPost = indexOfLastPost - postPerpage
     const currentPosts = post.slice(indexofFirstPost, indexOfLastPost);

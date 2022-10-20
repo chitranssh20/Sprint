@@ -10,6 +10,7 @@ import { UpgradeProduct } from './MyComponents/UpgradeProduct';
 import { Product } from './MyComponents/Product';
 import { ProductDetail } from './MyComponents/ProductDetail';
 import { Cart } from './MyComponents/Cart';
+import Checkout from './MyComponents/Checkout';
 import {
   BrowserRouter, 
   Routes, 
@@ -42,6 +43,8 @@ function App() {
     <Route path = '/addStaff' element= { <AddStaff /> } />
     <Route path = '/signup' element= { <SignUp /> } />
     <Route path = '/login' element= { <LogIn /> } />
+    <Route path = '/checkout' element= { <Checkout /> } />
+    
       
 
 
