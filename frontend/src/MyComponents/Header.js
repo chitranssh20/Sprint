@@ -8,6 +8,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import navigate, { useNavigate } from 'react-router-dom'
 import {LogIn} from './LogIn.js'
+// import {SearchSuggestion} from './SearchSuggestion'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 axios.defaults.xsrfCookieName = 'csrftoken' 
 // axios.defaults.withCredentials = true
@@ -68,8 +69,28 @@ const autoComplete = (query) =>{
     }
 }
 
+// const searchSuggestion = (queries) =>{
+//   if(queries.length <=5){
+//     queries.map((query)=>{
+//       return <li>{query.name}</li>
+//     })
+//   }
+
+//   else{
+//     let suggestions = [];
+//     for(let i = 0; i<5; i++){
+//         suggestions.push(queries[i]);
+//     }
+//     console.log(suggestions)
+//   //   return <ul>{suggestions}</ul>
+//     suggestions.map((query)=>{
+//       return <ul className='suggestionLi' >{query.name}</ul>
+//     })
+//   }
+  
+// }
+let liCompo = []
 const searchSuggestion = (queries) =>{
-  console.log(queries)
   if(queries.length <=5){
     queries.map((query)=>{
       return <li>{query.name}</li>
@@ -83,35 +104,28 @@ const searchSuggestion = (queries) =>{
     }
     console.log(suggestions)
   //   return <ul>{suggestions}</ul>
+   liCompo = []
     suggestions.map((query)=>{
-      return <li className='suggestionLi' >{query.name}</li>
+      liCompo.pudh(<li>{query.name}</li>)
     })
   }
   
 }
-// 9350925593
-
 
   return ( 
     <>
     <nav className='nav' > 
         <ul>
           <li><img src= {SprintLogo} alt= 'logo' onClick={home}  /> </li>
-          {/* <li><div id="autocomplete" class="autocomplete">
-              <input class="autocomplete-input" />
-              <ul class="autocomplete-result-list"></ul>
-    </div></li> */}
+       
 
           <li><input type='search' value= {search} placeholder= 'Search' onChange={(e)=>{
             setsearch(e.target.value) 
             autoComplete(e.target.value)
           }}  />
-            <button type= 'submit' onClick={submitSearch}>Search</button>
+          <button type= 'submit' onClick={submitSearch}>Search</button>
           <ul>
-            {
-              search.length==0?console.log():searchSuggestion(searchQuery)
-              
-            }
+            {liCompo}
           </ul>
           </li>
             <li onClick={logout} >Log Out</li>

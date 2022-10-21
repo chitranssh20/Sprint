@@ -44,4 +44,6 @@
 }
 .suggestionLi{
     height: 50px;
+    position: relative;
+    z-index: 5000;
 }
