@@ -17,13 +17,12 @@ export const Header = () => {
   
   let navigate = useNavigate();
 
-const [search, setsearch] = useState('')
+const [search, setsearch] = useState([])
 const submitSearch = () =>{
   alert(search);
   setsearch(''); 
 
 }
-        const cook = Cookies.get()
         // console.log(cook)
 
 const logout = () =>{
@@ -59,15 +58,61 @@ const loggingIn = () =>{
 const home = () =>{
   navigate('/')
 }
+
+const [searchQuery, setsearchQuery] = useState([])
+const autoComplete = (query) =>{
+    try {
+      axios.get(`http://localhost:8000/sprint/peek/?search=${query}`).then(res=>setsearchQuery(res.data)).catch(err => console.log(err));
+    } catch (error) {
+      console.log(error)
+    }
+}
+
+const searchSuggestion = (queries) =>{
+  console.log(queries)
+  if(queries.length <=5){
+    queries.map((query)=>{
+      return <li>{query.name}</li>
+    })
+  }
+
+  else{
+    let suggestions = [];
+    for(let i = 0; i<5; i++){
+        suggestions.push(queries[i]);
+    }
+    console.log(suggestions)
+  //   return <ul>{suggestions}</ul>
+    suggestions.map((query)=>{
+      return <li className='suggestionLi' >{query.name}</li>
+    })
+  }
+  
+}
+// 9350925593
+
+
   return ( 
     <>
     <nav className='nav' > 
         <ul>
           <li><img src= {SprintLogo} alt= 'logo' onClick={home}  /> </li>
-          <li><input type='search' value= {search} onChange={(e)=>{
+          {/* <li><div id="autocomplete" class="autocomplete">
+              <input class="autocomplete-input" />
+              <ul class="autocomplete-result-list"></ul>
+    </div></li> */}
+
+          <li><input type='search' value= {search} placeholder= 'Search' onChange={(e)=>{
             setsearch(e.target.value) 
+            autoComplete(e.target.value)
           }}  />
             <button type= 'submit' onClick={submitSearch}>Search</button>
+          <ul>
+            {
+              search.length==0?console.log():searchSuggestion(searchQuery)
+              
+            }
+          </ul>
           </li>
             <li onClick={logout} >Log Out</li>
           <li>

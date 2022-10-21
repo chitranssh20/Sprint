@@ -69,11 +69,15 @@ const addToCart = (e, id, name, price, image) => {
   let cart = localStorage.getItem('cart');
   cart==null?upgradeCart(id, name, price, image, 0, true):checkQty(id, name, price, image);
 }
-
+let NoProduct = {
+  textAlign: "center",
+  color: "red",
+  width: "100%"
+}
 
 const PostItem = ({post}) => {
-    if(1==2){
-        
+    if(post.length ==0 ){
+      return <h3 style={NoProduct} >No Products...</h3>
     }
     else{
         return post.map((posts)=>{

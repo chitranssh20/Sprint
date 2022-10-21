@@ -14,6 +14,8 @@ from .serializers import getProductSerializer, getStaffSerializer, getUserSerial
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework import filters
+from rest_framework.generics import ListAPIView
 
 # Create your views here.
 
@@ -253,6 +255,18 @@ class Blacklist(APIView):
             return Response("Succesfful")
         except Exception as e:
             return Response(status.HTTP_400_BAD_REQUEST)
+
+
+class Search(ListAPIView):
+    queryset = Product.objects.all()
+    permission_classes = [AllowAny] 
+    search_fields = ['desc', 'name']
+    filter_backends = (filters.SearchFilter,)
+    serializer_class = getProductSerializer
+
+   
+        
+        # return Response({'message': 'query received'})
 # These APIs will be made after creating frontend 
 # Order APIs 
 # Stats APIs 
