@@ -1,0 +1,14 @@
+.suggestedList{
+    background-color: white;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgb(122, 118, 118);
+    padding-top: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+.suggestedList:hover{
+    background-color: rgb(232, 229, 229);
+}

@@ -8,6 +8,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import navigate, { useNavigate } from 'react-router-dom'
 import {LogIn} from './LogIn.js'
+import {AutoSuggestion} from './AutoSuggestion'
 // import {SearchSuggestion} from './SearchSuggestion'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 axios.defaults.xsrfCookieName = 'csrftoken' 
@@ -63,52 +64,28 @@ const home = () =>{
 const [searchQuery, setsearchQuery] = useState([])
 const autoComplete = (query) =>{
     try {
-      axios.get(`http://localhost:8000/sprint/peek/?search=${query}`).then(res=>setsearchQuery(res.data)).catch(err => console.log(err));
+      axios.get(`http://localhost:8000/sprint/peek/?search=${query}`).then(function(res){
+
+        setsearchQuery(res.data)
+      }
+).catch(err => console.log(err));
     } catch (error) {
       console.log(error)
     }
 }
 
-// const searchSuggestion = (queries) =>{
-//   if(queries.length <=5){
-//     queries.map((query)=>{
-//       return <li>{query.name}</li>
-//     })
-//   }
+//
+useEffect(() => {
+  let searchUl = document.getElementsByClassName('autoSearchUl');
+  searchUl.innerHTML = 'j'
 
-//   else{
-//     let suggestions = [];
-//     for(let i = 0; i<5; i++){
-//         suggestions.push(queries[i]);
-//     }
-//     console.log(suggestions)
-//   //   return <ul>{suggestions}</ul>
-//     suggestions.map((query)=>{
-//       return <ul className='suggestionLi' >{query.name}</ul>
-//     })
-//   }
-  
-// }
-let liCompo = []
+}, [searchQuery])
+
+
 const searchSuggestion = (queries) =>{
-  if(queries.length <=5){
-    queries.map((query)=>{
-      return <li>{query.name}</li>
-    })
-  }
-
-  else{
-    let suggestions = [];
-    for(let i = 0; i<5; i++){
-        suggestions.push(queries[i]);
-    }
-    console.log(suggestions)
-  //   return <ul>{suggestions}</ul>
-   liCompo = []
-    suggestions.map((query)=>{
-      liCompo.pudh(<li>{query.name}</li>)
-    })
-  }
+  queries.map((query)=>{
+    // console.log(query.name)
+  })
   
 }
 
@@ -124,8 +101,8 @@ const searchSuggestion = (queries) =>{
             autoComplete(e.target.value)
           }}  />
           <button type= 'submit' onClick={submitSearch}>Search</button>
-          <ul>
-            {liCompo}
+          <ul className='autoSearchUl' >
+            <AutoSuggestion queries = {searchQuery} />
           </ul>
           </li>
             <li onClick={logout} >Log Out</li>

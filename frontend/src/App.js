@@ -30,7 +30,6 @@ function App() {
     <BrowserRouter>
     
     <Header />
-    <Filter />
     <Routes>
     <Route path='/' element = { <Product /> }  />
     <Route path = '/cart' element = {<Cart /> } />

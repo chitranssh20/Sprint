@@ -42,8 +42,13 @@
 .nav li button:active{
     transform: scale(0.9);
 }
-.suggestionLi{
-    height: 50px;
-    position: relative;
-    z-index: 5000;
+
+.autoSearchUl{
+    background-color: rgb(184, 10, 10);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px;
+    height: auto;
+    width: auto;
 }
