@@ -21,8 +21,11 @@ export const Header = () => {
 
 const [search, setsearch] = useState([])
 const submitSearch = () =>{
-  alert(search);
+  // alert(search);
+  // console.log(search)
+  navigate(`/search/${search}`)
   setsearch(''); 
+  setsearchQuery([])
 
 }
         // console.log(cook)
@@ -88,7 +91,6 @@ const searchSuggestion = (queries) =>{
   })
   
 }
-
   return ( 
     <>
     <nav className='nav' > 
@@ -100,7 +102,10 @@ const searchSuggestion = (queries) =>{
             setsearch(e.target.value) 
             autoComplete(e.target.value)
           }}  />
-          <button type= 'submit' onClick={submitSearch}>Search</button>
+          <button type= 'submit' onClick={(e)=>{
+            // e.preventDefault()
+            submitSearch()}
+          }>Search</button>
           <ul className='autoSearchUl' >
             <AutoSuggestion queries = {searchQuery} />
           </ul>

@@ -11,6 +11,7 @@ import { Product } from './MyComponents/Product';
 import { ProductDetail } from './MyComponents/ProductDetail';
 import { Cart } from './MyComponents/Cart';
 import Checkout from './MyComponents/Checkout';
+import { SearchProduct } from './MyComponents/SearchProduct';
 import {
   BrowserRouter, 
   Routes, 
@@ -32,6 +33,7 @@ function App() {
     <Header />
     <Routes>
     <Route path='/' element = { <Product /> }  />
+    <Route path = '/search/:query' element = { <SearchProduct /> } />
     <Route path = '/cart' element = {<Cart /> } />
     
     <Route  path =  '/admin' element= {<Admin />}  />

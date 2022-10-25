@@ -33,7 +33,7 @@ export const Product = () => {
     <>
     <div className='products'  >
 
-    <PostItem loading  = {loading} post = {currentPosts} />
+    <PostItem  post = {currentPosts} />
     </div>
     <Paginate postPerpage={postPerpage} totalPosts= {post.length} paginate = {paginate} />
 

@@ -75,13 +75,20 @@ let NoProduct = {
   width: "100%"
 }
 
-const PostItem = ({post}) => {
+const PostItem = ({post, picUrl }) => {
     if(post.length ==0 ){
       return <h3 style={NoProduct} >No Products...</h3>
     }
     else{
         return post.map((posts)=>{
-            let url = 'http://127.0.0.1:8000'
+          let url 
+            if(picUrl == 1){
+              url = 'http://localhost:8000/'
+            }
+            else{
+
+              url = 'http://localhost:8000'
+            }
             return <>
              <div className="card" key={posts.prodId} style= {cardStyle} >
             <img src= {url+ posts.prodImg} width= "50px" height= '50%'  className="card-img-top" alt= {posts.name} />
